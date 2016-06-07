@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using OpenTK;
 using OpenTK.Graphics.OpenGL;
 
 namespace Template_P3 {
@@ -12,6 +13,8 @@ namespace Template_P3 {
 	    public int attribute_vnrm;
 	    public int attribute_vuvs;
 	    public int uniform_mview;
+        public Vector3 ambientLightColor;
+        public Light[] lights;
 
 	    // constructor
 	    public Shader( String vertexShader, String fragmentShader )
@@ -40,5 +43,19 @@ namespace Template_P3 {
 		    GL.AttachShader( program, ID );
 		    Console.WriteLine( GL.GetShaderInfoLog( ID ) );
 	    }
+    }
+    
+    public class Light
+    {
+        public Vector3 position;
+        public Vector3 color;
+        public float intensity;
+
+        public Light(Vector3 pos, Vector3 col, float i)
+        {
+            position = pos;
+            color = col;
+            intensity = i;
+        }
     }
 } // namespace Template_P3
