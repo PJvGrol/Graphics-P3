@@ -10,11 +10,13 @@ namespace Template_P3 {
 	    // member variables
 	    public Surface screen;					// background surface for printing etc.
 	    Mesh mesh, floor;						// a mesh to draw using OpenGL
+        SceneGraph Graphy = new SceneGraph();
 	    const float PI = 3.1415926535f;			// PI
 	    float a = 0;							// teapot rotation angle
 	    Stopwatch timer;						// timer for measuring frame duration
 	    Shader shader;							// shader to use for rendering
 	    Texture wood;							// texture to use for rendering
+        Matrix3 cam = new Matrix3();
 
 	    // initialize
 	    public void Init()
@@ -59,6 +61,7 @@ namespace Template_P3 {
 		    // render scene
 		    mesh.Render( shader, transform, wood );
 		    floor.Render( shader, transform, wood );
+            Graphy.Render(cam);
 	    }
     }
 } // namespace Template_P3

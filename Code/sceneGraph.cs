@@ -11,7 +11,7 @@ namespace Template_P3
     {
         Mesh[] hierarchy;
 
-        static void Render(Matrix3 cam)
+        public void Render(Matrix3 cam)
         {
 
         }
