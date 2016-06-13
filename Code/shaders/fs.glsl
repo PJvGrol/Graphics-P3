@@ -4,6 +4,7 @@
 in vec2 uv;						// interpolated texture coordinates
 in vec4 normal;					// interpolated normal
 uniform sampler2D pixels;		// texture sampler
+uniform Light[] lights			// lights
 
 // shader output
 out vec4 outputColor;
@@ -13,3 +14,6 @@ void main()
 {
     outputColor = texture( pixels, uv ) + 0.5f * vec4( normal.xyz, 1 );
 }
+
+//formula:
+// output = ambient color + absorption due to material color(kleur) * (normaalvector * lightinvalvector) * lichtkleur + C_spec *(viewvector * lightvector)^S * Lspec
