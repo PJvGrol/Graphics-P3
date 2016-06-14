@@ -5,3 +5,7 @@ C:\Users\Slim Cognito\Documents\Visual Studio 2015\Projects\Graphics-P3\Code\bin
 C:\Users\Slim Cognito\Documents\Visual Studio 2015\Projects\Graphics-P3\Code\obj\Debug\template_P3.csprojResolveAssemblyReference.cache
 C:\Users\Slim Cognito\Documents\Visual Studio 2015\Projects\Graphics-P3\Code\obj\Debug\template_P3.exe
 C:\Users\Slim Cognito\Documents\Visual Studio 2015\Projects\Graphics-P3\Code\obj\Debug\template_P3.pdb
+C:\Users\Joris\Documents\Visual Studio 2013\Projects\Graphics-P3\Code\bin\Debug\template_P3.exe.config
+C:\Users\Joris\Documents\Visual Studio 2013\Projects\Graphics-P3\Code\obj\Debug\template_P3.exe
+C:\Users\Joris\Documents\Visual Studio 2013\Projects\Graphics-P3\Code\obj\Debug\template_P3.pdb
+C:\Users\Joris\Documents\Visual Studio 2013\Projects\Graphics-P3\Code\obj\Debug\template_P3.csprojResolveAssemblyReference.cache

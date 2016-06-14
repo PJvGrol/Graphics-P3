@@ -31,6 +31,7 @@ namespace Template_P3 {
 		    attribute_vnrm = GL.GetAttribLocation( programID, "vNormal" );
 		    attribute_vuvs = GL.GetAttribLocation( programID, "vUV" );
 		    uniform_mview = GL.GetUniformLocation( programID, "transform" );
+            lights = GL.GetUniformLocation(programID, "lights");
 	    }
 
 	    // loading shaders
