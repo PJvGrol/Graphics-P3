@@ -13,11 +13,21 @@ namespace Template_P3
         public SceneGraph parent;
         public SceneGraph[] children;
 
-        public Mesh mesh;
+        public Mesh current;
+
+        public SceneGraph(SceneGraph prnt, SceneGraph[] chldrn, Mesh mesh)
+        {
+            parent = prnt;
+            children = chldrn;
+            current = mesh;
+        }
 
         public void Render(Matrix4 cam)
         {
-
+            foreach(SceneGraph child in children)
+            {
+                Render(Matrix4.Mult(current.transformation, cam));
+            }
         }
     }
 }
