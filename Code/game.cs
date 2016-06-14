@@ -10,7 +10,7 @@ namespace Template_P3 {
 	    // member variables
 	    public Surface screen;					// background surface for printing etc.
 	    Mesh mesh, floor;						// a mesh to draw using OpenGL
-        SceneGraph Graphy = new SceneGraph();
+        SceneGraph Graphy ;
 	    const float PI = 3.1415926535f;			// PI
 	    float a = 0;							// teapot rotation angle
 	    Stopwatch timer;						// timer for measuring frame duration
@@ -25,6 +25,7 @@ namespace Template_P3 {
 		    // load teapot
 		    mesh = new Mesh( "../../assets/teapot.obj" );
 		    floor = new Mesh( "../../assets/floor.obj" );
+            Graphy = new SceneGraph(null, null, mesh);
 		    // initialize stopwatch
 		    timer = new Stopwatch();
 		    timer.Reset();
@@ -65,7 +66,7 @@ namespace Template_P3 {
 		    // render scene
 		    mesh.Render( shader, transform, wood , lights);
 		    floor.Render( shader, transform, wood , lights);
-            Graphy.Render(cam);
+            Graphy.Render(cam,lights);
 	    }
     }
 } // namespace Template_P3

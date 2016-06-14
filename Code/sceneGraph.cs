@@ -24,13 +24,13 @@ namespace Template_P3
             mesh = msh;
         }
 
-        public void Render(Matrix4 cam)
+        public void Render(Matrix4 cam, Light[] lights)
         {
             cam = Matrix4.Mult(cam, mesh.transformation);
-            mesh.Render(shader, cam, texture);
+            mesh.Render(shader, cam, texture, lights);
             foreach (SceneGraph child in children)
             {
-                Render(cam);
+                Render(cam, lights);
             }
         }
     }
