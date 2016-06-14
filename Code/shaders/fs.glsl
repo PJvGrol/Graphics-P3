@@ -16,4 +16,7 @@ void main()
 }
 
 //formula:
-// output = ambient color + absorption due to material color(kleur) * (normaalvector * lightinvalvector) * lichtkleur + C_spec *(viewvector * lightvector)^S * Lspec
+// output = ambient color + absorption due to material color(kleur) * (normaalvector * lightinvalvector) * lichtkleur + C_spec *(viewvector * reflectvector)^S * Lspec
+// Lspec = lightsterkte
+// Cspec = reflectiviteit van het materiaal.
+//S zijnde een constante die er mooi uit ziet.
