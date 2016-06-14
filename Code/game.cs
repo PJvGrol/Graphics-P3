@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using OpenTK;
-using OpenTK.Graphics.OpenGL;
 
 // minimal OpenTK rendering framework for UU/INFOGR
 // Jacco Bikker, 2016
