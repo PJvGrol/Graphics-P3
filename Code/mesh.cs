@@ -17,6 +17,8 @@ namespace Template_P3 {
 	    int triangleBufferId;					// triangle buffer
 	    int quadBufferId;						// quad buffer
 
+        public Matrix4 transformation;          // transformation matrix
+
 	    // constructor
 	    public Mesh( string fileName )
 	    {

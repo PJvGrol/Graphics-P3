@@ -17,7 +17,7 @@ namespace Template_P3 {
 	    Stopwatch timer;						// timer for measuring frame duration
 	    Shader shader;							// shader to use for rendering
 	    Texture wood;							// texture to use for rendering
-        Matrix3 cam = new Matrix3();
+        Matrix4 cam = new Matrix4();
 
 	    // initialize
 	    public void Init()

@@ -9,9 +9,13 @@ namespace Template_P3
 {
     class SceneGraph
     {
-        Mesh[] hierarchy;
+        // Enable hierarchical ordering
+        public SceneGraph parent;
+        public SceneGraph[] children;
 
-        public void Render(Matrix3 cam)
+        public Mesh mesh;
+
+        public void Render(Matrix4 cam)
         {
 
         }
