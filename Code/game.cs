@@ -17,6 +17,7 @@ namespace Template_P3 {
 	    Shader shader;							// shader to use for rendering
 	    Texture wood;							// texture to use for rendering
         Matrix4 cam = new Matrix4();
+        Light[] lights;
 
 	    // initialize
 	    public void Init()
@@ -32,6 +33,9 @@ namespace Template_P3 {
 		    shader = new Shader( "../../shaders/vs.glsl", "../../shaders/fs.glsl" );
 		    // load a texture
 		    wood = new Texture( "../../assets/wood.jpg" );
+            // load lights
+            lights = new Light[1];
+            lights[0] = new Light(new Vector3(1, 1, 1), new Vector3(1, 1, 1), 1);
 	    }
 
 	    // tick for background surface
@@ -59,8 +63,8 @@ namespace Template_P3 {
 		    if (a > 2 * PI) a -= 2 * PI;
 
 		    // render scene
-		    mesh.Render( shader, transform, wood );
-		    floor.Render( shader, transform, wood );
+		    mesh.Render( shader, transform, wood , lights);
+		    floor.Render( shader, transform, wood , lights);
             Graphy.Render(cam);
 	    }
     }

@@ -49,8 +49,21 @@ namespace Template_P3 {
 	    }
 
 	    // render the mesh using the supplied shader and matrix
-	    public void Render( Shader shader, Matrix4 transform, Texture texture )
+	    public void Render( Shader shader, Matrix4 transform, Texture texture , Light[] lights)
 	    {
+            float[] lightcol = new float[lights.Length*7];
+            int n = 0;
+            foreach(Light l in lights)
+            {
+                lightcol[n] = l.color.X;
+                lightcol[n + 1] = l.color.Y;
+                lightcol[n + 2] = l.color.Z;
+                lightcol[n + 3] = l.position.X;
+                lightcol[n + 4] = l.position.Y;
+                lightcol[n + 5] = l.position.Z;
+                lightcol[n + 6] = l.intensity;
+                    n++;
+            }
 		    // on first run, prepare buffers
 		    Prepare( shader );
 
@@ -68,6 +81,7 @@ namespace Template_P3 {
 
 		    // pass transform to vertex shader
 		    GL.UniformMatrix4( shader.uniform_mview, false, ref transform );
+            GL.Uniform3(shader.uniform_lights, 7, lightcol);
 
 		    // enable position, normal and uv attributes
 		    GL.EnableVertexAttribArray( shader.attribute_vpos );
