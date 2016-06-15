@@ -25,7 +25,6 @@ namespace Template_P3 {
 		    // load teapot
 		    mesh = new Mesh( "../../assets/teapot.obj" );
 		    floor = new Mesh( "../../assets/floor.obj" );
-            Graphy = new SceneGraph(null, null, mesh);
 		    // initialize stopwatch
 		    timer = new Stopwatch();
 		    timer.Reset();
@@ -37,7 +36,8 @@ namespace Template_P3 {
             // load lights
             lights = new Light[1];
             lights[0] = new Light(new Vector3(1, 1, 1), new Vector3(1, 1, 1), 1);
-	    }
+            Graphy = new SceneGraph(null, null, mesh, shader, wood);
+        }
 
 	    // tick for background surface
 	    public void Tick()

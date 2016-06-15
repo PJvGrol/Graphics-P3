@@ -17,20 +17,25 @@ namespace Template_P3
         public Shader shader;
         public Texture texture;
 
-        public SceneGraph(SceneGraph prnt, SceneGraph[] chldrn, Mesh msh)
+        public SceneGraph(SceneGraph prnt, SceneGraph[] chldrn, Mesh msh, Shader shhht, Texture texty)
         {
             parent = prnt;
             children = chldrn;
             mesh = msh;
+            shader = shhht;
+            texture = texty;
         }
 
         public void Render(Matrix4 cam, Light[] lights)
         {
             cam = Matrix4.Mult(cam, mesh.transformation);
             mesh.Render(shader, cam, texture, lights);
-            foreach (SceneGraph child in children)
+            if (children != null)
             {
-                Render(cam, lights);
+                foreach (SceneGraph child in children)
+                {
+                    Render(cam, lights);
+                }
             }
         }
     }
