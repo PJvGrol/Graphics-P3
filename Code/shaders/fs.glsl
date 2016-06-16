@@ -4,7 +4,7 @@
 in vec2 uv;						// interpolated texture coordinates
 in vec4 normal;					// interpolated normal
 uniform sampler2D pixels;		// texture sampler
-uniform vec3 lights[7];
+uniform float lights[7];
 
 
 
@@ -14,7 +14,11 @@ out vec4 outputColor;
 // fragment shader
 void main()
 {
-    outputColor = texture( pixels, uv ) + 0.5f * vec4( normal.xyz, 1 );
+	vec4 woop;
+	vec4 woop2;
+	woop = vec4(lights[1],lights[2],lights[3],0);
+	woop = vec4(lights[4],lights[5],lights[6],0);
+    outputColor = texture( pixels, uv ) *(0.2 + texture( pixels, uv) * (normal*woop)* woop2);
 }
 
 //formula:
