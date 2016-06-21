@@ -10,16 +10,14 @@ namespace Template_P3
     class SceneGraph
     {
         // Enable hierarchical ordering
-        public SceneGraph parent;
         public SceneGraph[] children;
 
         public Mesh mesh;
         public Shader shader;
         public Texture texture;
 
-        public SceneGraph(SceneGraph prnt, SceneGraph[] chldrn, Mesh msh, Shader shdr, Texture txtr)
+        public SceneGraph(SceneGraph[] chldrn, Mesh msh, Shader shdr, Texture txtr)
         {
-            parent = prnt;
             children = chldrn;
             mesh = msh;
             shader = shdr;
@@ -28,13 +26,14 @@ namespace Template_P3
 
         public void Render(Matrix4 cam, Light[] lights)
         {
-            cam = Matrix4.Mult(cam, mesh.transformation);
+            // Volgorde vermenigvuldiging?
+            cam = Matrix4.Mult(mesh.transformation, cam);
             mesh.Render(shader, cam, texture, lights);
             if (children != null)
             {
                 foreach (SceneGraph child in children)
                 {
-                    Render(cam, lights);
+                    child.Render(cam, lights);
                 }
             }
         }

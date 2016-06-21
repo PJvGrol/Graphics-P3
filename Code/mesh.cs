@@ -17,10 +17,10 @@ namespace Template_P3 {
 	    int triangleBufferId;					// triangle buffer
 	    int quadBufferId;						// quad buffer
 
-        public Matrix4 transformation;          // transformation matrix
+        public Matrix4 transformation = new Matrix4(Vector4.UnitX, Vector4.UnitY, Vector4.UnitZ, Vector4.UnitW);          // transformation matrix
 
-	    // constructor
-	    public Mesh( string fileName )
+        // constructor
+        public Mesh( string fileName )
 	    {
 		    MeshLoader loader = new MeshLoader();
 		    loader.Load( this, fileName );
@@ -81,10 +81,16 @@ namespace Template_P3 {
 
 		    // pass transform to vertex shader
 		    GL.UniformMatrix4( shader.uniform_mview, false, ref transform );
-            GL.Uniform3(shader.uniform_lights, 7, lightcol);
 
-		    // enable position, normal and uv attributes
-		    GL.EnableVertexAttribArray( shader.attribute_vpos );
+            // pass lights to fragment shader
+            GL.Uniform3(shader.uniform_lights, 7, lightcol);
+            GL.Uniform4(shader.uniform_lpos, lights[0].position);
+
+            GL.Uniform4(shader.uniform_lcol, lights[0].color);
+
+
+            // enable position, normal and uv attributes
+            GL.EnableVertexAttribArray( shader.attribute_vpos );
 		    GL.EnableVertexAttribArray( shader.attribute_vnrm );
 		    GL.EnableVertexAttribArray( shader.attribute_vuvs );
 

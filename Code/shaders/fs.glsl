@@ -3,6 +3,8 @@
 // shader input
 in vec2 uv;						// interpolated texture coordinates
 in vec4 normal;					// interpolated normal
+uniform vec4 lpos;
+uniform vec4 lcol;
 uniform sampler2D pixels;		// texture sampler
 uniform float lights[7];
 
@@ -16,9 +18,9 @@ void main()
 {
 	vec4 woop;
 	vec4 woop2;
-	woop = vec4(lights[1],lights[2],lights[3],0);
-	woop = vec4(lights[4],lights[5],lights[6],0);
-    outputColor = texture( pixels, uv ) *(0.2 + texture( pixels, uv) * (normal*woop)* woop2);
+	woop = lpos;
+	woop2 = lcol;
+    outputColor = texture( pixels, uv ) *(0.5 + texture( pixels, uv) * (normal*woop)* woop2);
 }
 
 //formula:

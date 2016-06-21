@@ -14,6 +14,8 @@ namespace Template_P3 {
 	    public int attribute_vuvs;
 	    public int uniform_mview;
         public int uniform_lights;
+        public int uniform_lpos;
+        public int uniform_lcol;
         public Vector3 ambientLightColor;
         public Light[] lights;
 
@@ -33,6 +35,8 @@ namespace Template_P3 {
 		    attribute_vuvs = GL.GetAttribLocation( programID, "vUV" );
 		    uniform_mview = GL.GetUniformLocation( programID, "transform" );
             uniform_lights = GL.GetUniformLocation(programID, "lights");
+            uniform_lcol = GL.GetUniformLocation(programID, "lcol");
+            uniform_lpos = GL.GetUniformLocation(programID, "lpos");
 
             
 	    }
@@ -51,11 +55,11 @@ namespace Template_P3 {
     
     public class Light
     {
-        public Vector3 position;
-        public Vector3 color;
+        public Vector4 position;
+        public Vector4 color;
         public float intensity;
 
-        public Light(Vector3 pos, Vector3 col, float i)
+        public Light(Vector4 pos, Vector4 col, float i)
         {
             position = pos;
             color = col;

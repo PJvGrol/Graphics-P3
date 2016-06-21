@@ -10,7 +10,7 @@ namespace Template_P3 {
 	    // member variables
 	    public Surface screen;					// background surface for printing etc.
 	    Mesh mesh, floor;						// a mesh to draw using OpenGL
-        SceneGraph Graphy ;
+        SceneGraph scenegraph ;
 	    const float PI = 3.1415926535f;			// PI
 	    float a = 0;							// teapot rotation angle
 	    Stopwatch timer;						// timer for measuring frame duration
@@ -24,8 +24,8 @@ namespace Template_P3 {
 	    {
 		    // load teapot
 		    mesh = new Mesh( "../../assets/teapot.obj" );
-		    floor = new Mesh( "../../assets/floor.obj" );
-		    // initialize stopwatch
+            floor = new Mesh("../../assets/floor.obj");
+            // initialize stopwatch
 		    timer = new Stopwatch();
 		    timer.Reset();
 		    timer.Start();
@@ -33,11 +33,10 @@ namespace Template_P3 {
 		    shader = new Shader( "../../shaders/vs.glsl", "../../shaders/fs.glsl" );
 		    // load a texture
 		    wood = new Texture( "../../assets/wood.jpg" );
-            Graphy = new SceneGraph(null, null, mesh, shader, wood);
+            scenegraph = new SceneGraph(new SceneGraph[] { new SceneGraph(null, mesh, shader, wood) }, floor, shader, wood);
             // load lights
             lights = new Light[1];
-            lights[0] = new Light(new Vector3(1, 1, 1), new Vector3(1, 1, 1), 1);
-            Graphy = new SceneGraph(null, null, mesh, shader, wood);
+            lights[0] = new Light(new Vector4(1, 1, 1,0), new Vector4(1, 1, 1, 0), 1);
         }
 
 	    // tick for background surface
@@ -65,9 +64,9 @@ namespace Template_P3 {
 		    if (a > 2 * PI) a -= 2 * PI;
 
 		    // render scene
-		    mesh.Render( shader, transform, wood , lights);
-		    floor.Render( shader, transform, wood , lights);
-            Graphy.Render(cam,lights);
+		    // mesh.Render( shader, transform, wood , lights);
+		    // floor.Render( shader, transform, wood , lights);
+            scenegraph.Render(transform, lights);
 	    }
     }
 } // namespace Template_P3
