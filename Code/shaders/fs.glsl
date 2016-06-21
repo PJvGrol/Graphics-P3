@@ -3,10 +3,12 @@
 // shader input
 in vec2 uv;						// interpolated texture coordinates
 in vec4 normal;					// interpolated normal
+in vec4 vpos;
+in vec4 cpos;
 uniform vec4 lpos;
 uniform vec4 lcol;
+uniform float lint;
 uniform sampler2D pixels;		// texture sampler
-uniform float lights[7];
 
 
 
@@ -16,11 +18,10 @@ out vec4 outputColor;
 // fragment shader
 void main()
 {
-	vec4 woop;
-	vec4 woop2;
-	woop = lpos;
-	woop2 = lcol;
-    outputColor = texture( pixels, uv ) *(0.5 + texture( pixels, uv) * (normal*woop)* woop2);
+	vec4 inval= normalize(lpos- vpos);
+	vec4 reflec = normalize(inval - (2*(dot(inval,normal)*normal)));
+	float t = max(0,dot(reflec,normalize( cpos-vpos)));
+    outputColor = texture( pixels, uv )* (0.2 + texture( pixels, uv) * dot(normalize(normal),inval)* lcol*4 + (0.2 * t*t*t*t * lint));
 }
 
 //formula:

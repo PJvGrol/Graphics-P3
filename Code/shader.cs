@@ -15,7 +15,9 @@ namespace Template_P3 {
 	    public int uniform_mview;
         public int uniform_lights;
         public int uniform_lpos;
+        public int uniform_lint;
         public int uniform_lcol;
+        public int uniform_cpos;
         public Vector3 ambientLightColor;
         public Light[] lights;
 
@@ -28,15 +30,17 @@ namespace Template_P3 {
 		    Load( fragmentShader, ShaderType.FragmentShader, programID, out fsID );
 		    GL.LinkProgram( programID );
 		    Console.WriteLine( GL.GetProgramInfoLog( programID ) );
-
+            
 		    // get locations of shader parameters
 		    attribute_vpos = GL.GetAttribLocation( programID, "vPosition" );
 		    attribute_vnrm = GL.GetAttribLocation( programID, "vNormal" );
 		    attribute_vuvs = GL.GetAttribLocation( programID, "vUV" );
+            uniform_cpos = GL.GetUniformLocation(programID, "cPosition");
 		    uniform_mview = GL.GetUniformLocation( programID, "transform" );
             uniform_lights = GL.GetUniformLocation(programID, "lights");
             uniform_lcol = GL.GetUniformLocation(programID, "lcol");
             uniform_lpos = GL.GetUniformLocation(programID, "lpos");
+            uniform_lint = GL.GetUniformLocation(programID, "lint");
 
             
 	    }

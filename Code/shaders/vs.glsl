@@ -4,9 +4,12 @@
 in vec2 vUV;				// vertex uv coordinate
 in vec3 vNormal;			// untransformed vertex normal
 in vec3 vPosition;			// untransformed vertex position
+in vec4 cPosition;
 
 // shader output
 out vec4 normal;			// transformed vertex normal
+out vec4 vpos;
+out vec4 cpos;
 out vec2 uv;				
 uniform mat4 transform;
  
@@ -18,5 +21,7 @@ void main()
 
 	// forward normal and uv coordinate; will be interpolated over triangle
 	normal = transform * vec4( vNormal, 0.0f );
+	vpos = transform* vec4(vPosition, 0.0f);
+	cpos = transform* cPosition;
 	uv = vUV;
 }

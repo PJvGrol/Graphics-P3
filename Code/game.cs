@@ -36,14 +36,14 @@ namespace Template_P3 {
             scenegraph = new SceneGraph(new SceneGraph[] { new SceneGraph(null, mesh, shader, wood) }, floor, shader, wood);
             // load lights
             lights = new Light[1];
-            lights[0] = new Light(new Vector4(1, 1, 1,0), new Vector4(1, 1, 1, 0), 1);
+            lights[0] = new Light(new Vector4(4, 4, -15 ,1), new Vector4(1, 1,1 , 1), 10);
         }
 
 	    // tick for background surface
 	    public void Tick()
 	    {
 		    screen.Clear( 0 );
-		    screen.Print( "hello world", 2, 2, 0xffff00 );
+		    screen.Print( "I GUESS IT IS TIME4TEA", 2, 2, 0xffff00 );
 	    }
 
 	    // tick for OpenGL rendering code

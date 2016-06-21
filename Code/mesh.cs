@@ -49,21 +49,8 @@ namespace Template_P3 {
 	    }
 
 	    // render the mesh using the supplied shader and matrix
-	    public void Render( Shader shader, Matrix4 transform, Texture texture , Light[] lights)
+	    public void Render( Shader shader, Matrix4 transform, Texture texture , Light[] lights, Vector4 cam)
 	    {
-            float[] lightcol = new float[lights.Length*7];
-            int n = 0;
-            foreach(Light l in lights)
-            {
-                lightcol[n] = l.color.X;
-                lightcol[n + 1] = l.color.Y;
-                lightcol[n + 2] = l.color.Z;
-                lightcol[n + 3] = l.position.X;
-                lightcol[n + 4] = l.position.Y;
-                lightcol[n + 5] = l.position.Z;
-                lightcol[n + 6] = l.intensity;
-                    n++;
-            }
 		    // on first run, prepare buffers
 		    Prepare( shader );
 
@@ -83,10 +70,10 @@ namespace Template_P3 {
 		    GL.UniformMatrix4( shader.uniform_mview, false, ref transform );
 
             // pass lights to fragment shader
-            GL.Uniform3(shader.uniform_lights, 7, lightcol);
             GL.Uniform4(shader.uniform_lpos, lights[0].position);
-
+            GL.Uniform1(shader.uniform_lint, lights[0].intensity);
             GL.Uniform4(shader.uniform_lcol, lights[0].color);
+            GL.Uniform4(shader.uniform_cpos, cam);
 
 
             // enable position, normal and uv attributes
