@@ -16,7 +16,7 @@ namespace Template_P3 {
 	    Stopwatch timer;						// timer for measuring frame duration
 	    Shader shader;							// shader to use for rendering
 	    Texture wood;							// texture to use for rendering
-        Matrix4 cam = new Matrix4();
+        Matrix4 cam = new Matrix4(1.0f,0,0,0,0,1.0f,0,0,0,0,1.0f,0,0,0,0,1.0f);
         Light[] lights;
 
 	    // initialize
@@ -53,10 +53,59 @@ namespace Template_P3 {
 		    float frameDuration = timer.ElapsedMilliseconds;
 		    timer.Reset();
 		    timer.Start();
-	
+            var keyboard = OpenTK.Input.Keyboard.GetState();
+            if (keyboard[OpenTK.Input.Key.W])
+            {
+                cam *= Matrix4.CreateTranslation(0, 0, 0.1f);
+            }
+            if(keyboard[OpenTK.Input.Key.S])
+            {
+                cam *= Matrix4.CreateTranslation(0, 0, -0.1f);
+            }
+            if (keyboard[OpenTK.Input.Key.Space])
+            {
+                cam *= Matrix4.CreateTranslation(0,-0.1f, 0);
+            }
+            if (keyboard[OpenTK.Input.Key.ShiftLeft])
+            {
+                cam *= Matrix4.CreateTranslation(0, 0.1f, 0);
+            }
+            if (keyboard[OpenTK.Input.Key.A])
+            {
+                cam *= Matrix4.CreateTranslation(0.1f, 0, 0);
+            }
+            if (keyboard[OpenTK.Input.Key.D])
+            {
+                cam *= Matrix4.CreateTranslation(-0.1f, 0, 0);
+            }
+            if (keyboard[OpenTK.Input.Key.I])
+            {
+                cam *= Matrix4.CreateRotationX(0.1f);
+            }
+            if (keyboard[OpenTK.Input.Key.Q])
+            {
+                cam *= Matrix4.CreateRotationY(-0.1f);
+            }
+            if (keyboard[OpenTK.Input.Key.E])
+            {
+                cam *= Matrix4.CreateRotationY(0.1f);
+            }
+            if (keyboard[OpenTK.Input.Key.K])
+            {
+                cam *= Matrix4.CreateRotationX(-0.1f);
+            }
+            if (keyboard[OpenTK.Input.Key.J])
+            {
+                cam *= Matrix4.CreateRotationZ(-0.1f);
+            } 
+            if (keyboard[OpenTK.Input.Key.L])
+            {
+                cam *= Matrix4.CreateRotationZ(0.1f);
+            }
 		    // prepare matrix for vertex shader
 		    Matrix4 transform = Matrix4.CreateFromAxisAngle( new Vector3( 0, 1, 0 ), a );
 		    transform *= Matrix4.CreateTranslation( 0, -4, -15 );
+            transform *= cam;
 		    transform *= Matrix4.CreatePerspectiveFieldOfView( 1.2f, 1.3f, .1f, 1000 );
 
 		    // update rotation
