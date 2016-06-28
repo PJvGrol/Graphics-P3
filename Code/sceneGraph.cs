@@ -28,7 +28,7 @@ namespace Template_P3
         {
             id = Matrix4.Mult(mesh.transformation, id);
             trans = Matrix4.Mult(mesh.transformation, trans);
-            mesh.Render(shader, trans, texture, lights, cam);
+            mesh.Render(shader, trans, texture, lights, cam, id);
             if (children != null)
             {
                 foreach (SceneGraph child in children)

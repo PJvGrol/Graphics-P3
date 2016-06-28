@@ -49,7 +49,7 @@ namespace Template_P3 {
 	    }
 
 	    // render the mesh using the supplied shader and matrix
-	    public void Render( Shader shader, Matrix4 transform, Texture texture , Light[] lights, Vector4 cam)
+	    public void Render( Shader shader, Matrix4 transform, Texture texture , Light[] lights, Vector4 cam, Matrix4 id)
 	    {
 		    // on first run, prepare buffers
 		    Prepare( shader );
@@ -68,6 +68,7 @@ namespace Template_P3 {
             
 		    // pass transform to vertex shader
 		    GL.UniformMatrix4( shader.uniform_mview, false, ref transform );
+            GL.UniformMatrix4(shader.uniform_idmview, false, ref id);
 
             // pass lights to fragment shader
             GL.Uniform4(shader.uniform_lpos, lights[0].position);

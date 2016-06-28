@@ -12,6 +12,7 @@ out vec4 vpos;
 out vec4 cpos;
 out vec2 uv;				
 uniform mat4 transform;
+uniform mat4 idtransform;
  
 // vertex shader
 void main()
@@ -20,8 +21,8 @@ void main()
 	gl_Position = transform * vec4(vPosition, 1.0);
 
 	// forward normal and uv coordinate; will be interpolated over triangle
-	normal = transform * vec4( vNormal, 0.0f );
-	vpos = transform* vec4(vPosition, 0.0f);
+	normal = idtransform * vec4( vNormal, 0.0f );
+	vpos = idtransform* vec4(vPosition, 0.0f);
 	cpos =  cPosition; //* tranform;
 	uv = vUV;
 }
