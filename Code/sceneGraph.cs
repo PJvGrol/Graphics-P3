@@ -24,15 +24,16 @@ namespace Template_P3
             texture = txtr;
         }
 
-        public void Render(Matrix4 trans, Light[] lights, Vector4 cam)
+        public void Render(Matrix4 trans, Light[] lights, Vector4 cam, Matrix4 id)
         {
+            id = Matrix4.Mult(mesh.transformation, id);
             trans = Matrix4.Mult(mesh.transformation, trans);
             mesh.Render(shader, trans, texture, lights, cam);
             if (children != null)
             {
                 foreach (SceneGraph child in children)
                 {
-                    child.Render(trans, lights, cam);
+                    child.Render(trans, lights, cam, id);
                 }
             }
         }

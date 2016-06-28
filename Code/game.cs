@@ -116,7 +116,7 @@ namespace Template_P3 {
             // mesh.Render( shader, transform, wood , lights);
             // floor.Render( shader, transform, wood , lights);
             Vector4 camera = new Vector4(0, -4, -15, 1);
-            scenegraph.Render(transform, lights, camera);
+            scenegraph.Render(transform, lights, camera, Matrix4.Identity);
 	    }
     }
 } // namespace Template_P3
