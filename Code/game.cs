@@ -112,10 +112,11 @@ namespace Template_P3 {
 		    a += 0.001f * frameDuration; 
 		    if (a > 2 * PI) a -= 2 * PI;
 
-		    // render scene
-		    // mesh.Render( shader, transform, wood , lights);
-		    // floor.Render( shader, transform, wood , lights);
-            scenegraph.Render(transform, lights);
+            // render scene
+            // mesh.Render( shader, transform, wood , lights);
+            // floor.Render( shader, transform, wood , lights);
+            Vector4 camera = new Vector4(0, -4, -15, 1);
+            scenegraph.Render(transform, lights, camera);
 	    }
     }
 } // namespace Template_P3
