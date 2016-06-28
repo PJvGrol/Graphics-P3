@@ -26,7 +26,12 @@ void main()
 	vec4 reflec1 = normalize(inval1 - (2*(dot(inval1,normal)*normal)));
 	vec4 reflec2 = normalize(inval1 - (2*(dot(inval2,normal)*normal)));
 	float t = max(0,dot(reflec1,normalize( cpos-vpos)));
-    outputColor = texture( pixels, uv )* (0.2 + texture( pixels, uv) * dot(normalize(normal),inval1)* lcol1*4 + (0.2 * t*t*t*t * lint1));
+	float t2 = max(0,dot(reflec2, normalize(cpos -vpos)));
+	float difusion1 = float(texture( pixels, uv) * dot(normalize(normal),inval1)* lcol1*4);
+	float reflection1 = (0.2 * t*t*t*t * lint1);
+	float difusion2 = float(texture( pixels, uv) * dot(normalize(normal),inval2)* lcol2*4);
+	float reflection2 = (0.2 * pow(t2,4) *lint2);
+    outputColor = texture( pixels, uv )* (0.2 + max(0, difusion1) + max(0,difusion2) + reflection1 + reflection2);
 }
 
 //formula:
