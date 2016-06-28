@@ -74,9 +74,9 @@ namespace Template_P3 {
             GL.Uniform4(shader.uniform_lpos1, lights[0].position);
             GL.Uniform1(shader.uniform_lint1, lights[0].intensity);
             GL.Uniform4(shader.uniform_lcol1, lights[0].color);
-            GL.Uniform4(shader.uniform_lpos2, lights[0].position);
-            GL.Uniform1(shader.uniform_lint2, lights[0].intensity);
-            GL.Uniform4(shader.uniform_lcol2, lights[0].color);
+            GL.Uniform4(shader.uniform_lpos2, lights[1].position);
+            GL.Uniform1(shader.uniform_lint2, lights[1].intensity);
+            GL.Uniform4(shader.uniform_lcol2, lights[1].color);
             GL.Uniform4(shader.uniform_cpos, cam);
 
 

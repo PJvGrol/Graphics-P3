@@ -40,8 +40,9 @@ namespace Template_P3 {
 		    wood = new Texture( "../../assets/wood.jpg" );
             scenegraph = new SceneGraph(new SceneGraph[] { new SceneGraph(null, mesh, shader, wood) }, floor, shader, wood);
             // load lights
-            lights = new Light[1];
+            lights = new Light[2];
             lights[0] = new Light(new Vector4(4, 4, 15 ,1), new Vector4(1, 1,1 , 1), 10);
+            lights[1] = new Light(new Vector4(4, 4, -15, 1), new Vector4(1, 1, 1, 1), 10);
             // set cam matrix and camera position
             cam = Matrix4.Identity;
             camera = new Vector4(0, -4, -15, 1);
