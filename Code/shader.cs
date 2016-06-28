@@ -15,9 +15,12 @@ namespace Template_P3 {
 	    public int uniform_mview;
         public int uniform_idmview;
         public int uniform_lights;
-        public int uniform_lpos;
-        public int uniform_lint;
-        public int uniform_lcol;
+        public int uniform_lpos1;
+        public int uniform_lpos2;
+        public int uniform_lint1;
+        public int uniform_lint2;
+        public int uniform_lcol1;
+        public int uniform_lcol2;
         public int uniform_cpos;
         public Vector3 ambientLightColor;
         public Light[] lights;
@@ -40,12 +43,15 @@ namespace Template_P3 {
 		    uniform_mview = GL.GetUniformLocation( programID, "transform" );
             uniform_idmview = GL.GetUniformLocation(programID, "idtransform");
             uniform_lights = GL.GetUniformLocation(programID, "lights");
-            uniform_lcol = GL.GetUniformLocation(programID, "lcol");
-            uniform_lpos = GL.GetUniformLocation(programID, "lpos");
-            uniform_lint = GL.GetUniformLocation(programID, "lint");
+            uniform_lcol1 = GL.GetUniformLocation(programID, "lcol1");
+            uniform_lcol2 = GL.GetUniformLocation(programID, "lcol2");
+            uniform_lpos1 = GL.GetUniformLocation(programID, "lpos1");
+            uniform_lpos2 = GL.GetUniformLocation(programID, "lpos2");
+            uniform_lint1 = GL.GetUniformLocation(programID, "lint1");
+            uniform_lint2 = GL.GetUniformLocation(programID, "lint2");
 
-            
-	    }
+
+        }
 
 	    // loading shaders
 	    void Load( String filename, ShaderType type, int program, out int ID )

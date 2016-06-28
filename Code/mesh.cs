@@ -71,9 +71,12 @@ namespace Template_P3 {
             GL.UniformMatrix4(shader.uniform_idmview, false, ref id);
 
             // pass lights to fragment shader
-            GL.Uniform4(shader.uniform_lpos, lights[0].position);
-            GL.Uniform1(shader.uniform_lint, lights[0].intensity);
-            GL.Uniform4(shader.uniform_lcol, lights[0].color);
+            GL.Uniform4(shader.uniform_lpos1, lights[0].position);
+            GL.Uniform1(shader.uniform_lint1, lights[0].intensity);
+            GL.Uniform4(shader.uniform_lcol1, lights[0].color);
+            GL.Uniform4(shader.uniform_lpos2, lights[0].position);
+            GL.Uniform1(shader.uniform_lint2, lights[0].intensity);
+            GL.Uniform4(shader.uniform_lcol2, lights[0].color);
             GL.Uniform4(shader.uniform_cpos, cam);
 
 
