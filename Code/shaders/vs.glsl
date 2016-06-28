@@ -23,6 +23,6 @@ void main()
 	// forward normal and uv coordinate; will be interpolated over triangle
 	normal = idtransform * vec4( vNormal, 0.0f );
 	vpos = idtransform* vec4(vPosition, 0.0f);
-	cpos =  cPosition; //* tranform;
+	cpos =  cPosition;
 	uv = vUV;
 }

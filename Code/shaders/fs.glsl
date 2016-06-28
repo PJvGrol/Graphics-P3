@@ -18,7 +18,7 @@ out vec4 outputColor;
 // fragment shader
 void main()
 {
-	vec4 inval= normalize(lpos- vpos);
+	vec4 inval = normalize(lpos - vpos);
 	vec4 reflec = normalize(inval - (2*(dot(inval,normal)*normal)));
 	float t = max(0,dot(reflec,normalize( cpos-vpos)));
     outputColor = texture( pixels, uv )* (0.2 + texture( pixels, uv) * dot(normalize(normal),inval)* lcol*4 + (0.2 * t*t*t*t * lint));
